@@ -14,5 +14,5 @@ export class ClientsService {
         @InjectRepository(ClientPhones)
 		private readonly clientPhonesRepository: Repository<ClientPhones>,
     ) {}
-    
+
 }

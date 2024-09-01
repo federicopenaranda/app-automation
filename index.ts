@@ -1,16 +1,26 @@
 import { AppDefinition } from './types';
 
 const app: AppDefinition = {
-    appName: 'MercadoLibre',
+    appName: 'sampleapp',
     backendDependencies: [
+        { package: '@nestjs/config', version: '^3.2.3', type: 'app' },
+        { package: '@nestjs/passport', version: '^10.0.3', type: 'app' },
+        { package: '@nestjs/typeorm', version: '^10.0.2', type: 'app' },
+        { package: 'bcryptjs', version: '^2.4.3', type: 'app' },
         { package: 'class-transformer', version: '^0.5.1', type: 'app' },
-        { package: 'class-validator', version: '^0.14.0', type: 'app' },
-        { package: 'bcrypt', version: '^5.1.1', type: 'app' },
+        { package: 'class-validator', version: '^0.14.1', type: 'app' },
+        { package: 'jsonwebtoken', version: '^9.0.2', type: 'app' },
+        { package: 'passport', version: '^0.7.0', type: 'app' },
+        { package: 'passport-jwt', version: '^4.0.1', type: 'app' },
+        { package: 'passport-local', version: '^1.0.0', type: 'app' },
+        { package: 'pg', version: '^8.12.0', type: 'app' },
+        { package: 'typeorm', version: '^0.3.20', type: 'app' },
+        { package: '@types/bcryptjs', version: '^2.4.6', type: 'dev' },
+        { package: '@types/jsonwebtoken', version: '^9.0.6', type: 'dev' },
+        { package: '@types/passport-jwt', version: '^4.0.1', type: 'dev' },
+        { package: '@types/passport-local', version: '^1.0.38', type: 'dev' },
     ],
     frontendDependencies: [
-        { package: '@angular/cdk', version: '^0.5.1', type: 'dev' },
-        { package: '@angular/material', version: '^16.2.4', type: 'app' },
-        { package: 'luxon', version: '^3.4.3', type: 'app' },
     ],
     modules: [
         {
@@ -24,12 +34,6 @@ const app: AppDefinition = {
                             type: 'integer',
                             required: true,
                             primaryKey: true,
-                        },
-                        {
-                            name: 'uuid',
-                            type: 'uuid',
-                            required: true,
-                            unique: true,
                         },
                         {
                             name: 'username',
@@ -156,6 +160,11 @@ const app: AppDefinition = {
                             length: 255
                         },
                         {
+                            name: 'tipo_cliente',
+                            type: 'enum',
+                            
+                        }
+                        {
                             name: 'email',
                             type: 'varchar',
                             required: true,
@@ -215,3 +224,4 @@ const app: AppDefinition = {
         }
     ]
 }
+
