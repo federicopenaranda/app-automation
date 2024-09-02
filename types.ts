@@ -23,7 +23,7 @@ export interface Table {
 
 export interface Column {
     name: string
-    type: "uuid" | "integer" | "bigint" | "decimal" | "varchar" | "text" | "timetz" | "timestamptz" | "timestamp" | "date" | "time" | "boolean" | "set" | "json",
+    type: "update_date" | "create_date" | "email" | "uuid" | "integer" | "bigint" | "decimal" | "varchar" | "text" | "timetz" | "timestamptz" | "timestamp" | "date" | "time" | "boolean" | "enum" | "json",
     length?: number
     required: boolean
     default?: string

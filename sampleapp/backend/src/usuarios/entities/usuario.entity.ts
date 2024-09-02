@@ -23,6 +23,12 @@ export class Usuario {
 	@Column( { type: 'date', nullable: true } )
 	first_login_date?: Date;
 
+	@Column( { type: 'timestamp', nullable: false } )
+	last_login_timestamp!: Date;
+
+	@Column( { type: 'timestamptz', nullable: false } )
+	last_login_timestamp_tz!: Date;
+
 	@Column( { type: 'boolean', nullable: false } )
 	is_active?: boolean;
 

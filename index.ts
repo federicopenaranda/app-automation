@@ -24,10 +24,10 @@ const app: AppDefinition = {
     ],
     modules: [
         {
-            name: 'users',
+            name: 'usuarios',
             tables: [
                 {
-                    tableName: 'users',
+                    tableName: 'usuario',
                     columns: [
                         {
                             name: 'id',
@@ -43,7 +43,7 @@ const app: AppDefinition = {
                         },
                         {
                             name: 'email',
-                            type: 'varchar',
+                            type: 'email',
                             length: 245,
                             required: false,
                             unique: true
@@ -71,6 +71,16 @@ const app: AppDefinition = {
                             required: false
                         },
                         {
+                            name: 'last_login_timestamp',
+                            type: 'timestamp',
+                            required: true
+                        },
+                        {
+                            name: 'last_login_timestamp_tz',
+                            type: 'timestamptz',
+                            required: true
+                        },
+                        {
                             name: 'is_active',
                             type: 'boolean',
                             required: true
@@ -82,70 +92,23 @@ const app: AppDefinition = {
                         },
                         {
                             name: 'created_at',
-                            type: 'timestamp',
+                            type: 'create_date',
                             required: false,
                         },
                         {
                             name: 'updated_at',
-                            type: 'timestamp',
+                            type: 'update_date',
                             required: false,
-                        }
-                    ]
-                },
-                {
-                    tableName: 'user_roles',
-                    columns: [
-                        {
-                            name: 'id',
-                            type: 'integer',
-                            required: true,
-                            primaryKey: true,
-                        },
-                        {
-                            name: 'role',
-                            type: 'set',
-                            set: ['admin', 'editor', 'ghost'],
-                            required: true,
-                            default: 'editor'
-                        },
-                        {
-                            name: 'is_active',
-                            type: 'boolean',
-                            required: true
-                        },
-                        {
-                            name: 'role_assigned',
-                            type: 'timestamptz',
-                            required: true
-                        },
-                        {
-                            name: 'role_start_time',
-                            type: 'timetz',
-                            required: true
-                        },
-                        {
-                            name: 'role_end_time',
-                            type: 'timetz',
-                            required: true
-                        },
-                        {
-                            name: 'fk_id_user',
-                            type: 'integer',
-                            required: true,
-                            foreignKey: {
-                                table: 'users',
-                                column: 'id'
-                            }
                         }
                     ]
                 }
             ]
         },
         {
-            name: 'clients',
+            name: 'clientes',
             tables: [
                 {
-                    tableName: 'clients',
+                    tableName: 'cliente',
                     columns: [
                         {
                             name: 'id',
@@ -160,13 +123,14 @@ const app: AppDefinition = {
                             length: 255
                         },
                         {
-                            name: 'tipo_cliente',
+                            name: 'client_type',
                             type: 'enum',
-                            
-                        }
+                            required: true,
+                            set: ["local", "national", "international"]
+                        },
                         {
                             name: 'email',
-                            type: 'varchar',
+                            type: 'email',
                             required: true,
                             length: 245
                         },
@@ -177,46 +141,13 @@ const app: AppDefinition = {
                         },
                         {
                             name: 'created_at',
-                            type: 'timestamptz',
+                            type: 'create_date',
                             required: false
                         },
                         {
                             name: 'updated_at',
-                            type: 'timestamptz',
+                            type: 'update_date',
                             required: false
-                        }
-                    ]
-                },
-                {
-                    tableName: 'client_phones',
-                    columns: [
-                        {
-                            name: 'id',
-                            type: 'integer',
-                            required: true,
-                            primaryKey: true,
-                        },
-                        {
-                            name: 'fk_id_client',
-                            type: 'integer',
-                            required: true,
-                            foreignKey: {
-                                table: 'clients',
-                                column: 'id'
-                            }
-                        },
-                        {
-                            name: 'phone',
-                            type: 'varchar',
-                            required: true,
-                            length: 255
-                        },
-                        {
-                            name: 'phone_type',
-                            type: 'set',
-                            required: true,
-                            set: ["office", "cellphone", "store"],
-                            default: 'office'
                         }
                     ]
                 }
